@@ -14,6 +14,8 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/songstats/songstats-ruby-sdk"
+  spec.metadata["bug_tracker_uri"] = "https://github.com/songstats/songstats-ruby-sdk/issues"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.files = Dir.chdir(__dir__) do
     Dir[
