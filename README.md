@@ -1,6 +1,10 @@
 # Songstats Ruby SDK
 
-Ruby SDK for the Songstats Enterprise API (`/enterprise/v1`).
+Official Ruby Client SDK for the Songstats Enterprise API.
+
+## API Documentation
+
+https://docs.songstats.com
 
 ## Install
 
