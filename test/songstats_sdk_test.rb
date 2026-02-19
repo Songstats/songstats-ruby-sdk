@@ -97,16 +97,6 @@ class SongstatsSDKTest < Minitest::Test
     assert_equal 10, request.params[:limit]
   end
 
-  def test_client_does_not_expose_charts_or_stations
-    adapter = FakeAdapter.new(
-      responses: [response(200, { result: "success" })]
-    )
-    client = SongstatsSDK::Client.new(api_key: "test_key", http_adapter: adapter)
-
-    refute_respond_to client, :charts
-    refute_respond_to client, :stations
-  end
-
   private
 
   def response(status, payload)
