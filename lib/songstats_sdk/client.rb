@@ -2,7 +2,7 @@
 
 module SongstatsSDK
   class Client
-    attr_reader :info, :tracks, :artists, :collaborators, :labels, :charts, :stations
+    attr_reader :info, :tracks, :artists, :collaborators, :labels
 
     def initialize(api_key:, base_url: HTTPClient::DEFAULT_BASE_URL, timeout: HTTPClient::DEFAULT_TIMEOUT_SECONDS,
       max_retries: 2, http_adapter: nil, user_agent: nil)
@@ -20,8 +20,6 @@ module SongstatsSDK
       @artists = Resources::Artists.new(@http)
       @collaborators = Resources::Collaborators.new(@http)
       @labels = Resources::Labels.new(@http)
-      @charts = Resources::Charts.new(@http)
-      @stations = Resources::Stations.new(@http)
     end
 
     def close

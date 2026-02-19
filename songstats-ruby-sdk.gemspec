@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email = ["api@songstats.com"]
 
   spec.summary = "Ruby SDK for the Songstats Enterprise API."
-  spec.description = "Typed Ruby client covering all /enterprise/v1 Songstats API routes."
+  spec.description = "Typed Ruby client for Songstats Enterprise API resources."
   spec.homepage = "https://songstats.com"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"

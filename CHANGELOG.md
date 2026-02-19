@@ -2,9 +2,21 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.0] - 2026-02-19
+
+### Changed
+
+- Removed `charts` resource client from the SDK surface
+- Removed `stations` resource client from the SDK surface
+- Kept `info` endpoints:
+  - `client.info.sources` (`/sources`)
+  - `client.info.status` (`/status`)
+  - `client.info.definitions` (`/definitions`)
+
 ## [0.1.0] - 2026-02-19
 
 ### Added
+
 - Initial standalone Ruby SDK repo for Songstats Enterprise API (`/enterprise/v1`)
 - Full resource coverage:
   - `info`

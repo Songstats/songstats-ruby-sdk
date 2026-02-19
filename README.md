@@ -3,7 +3,7 @@
 Official Ruby client for the **Songstats Enterprise API**.
 
 📦 RubyGems: https://rubygems.org/gems/songstats-ruby-sdk  
-📚 API Documentation: https://docs.songstats.com  
+📚 API Documentation: https://docs.songstats.com
 
 ---
 
@@ -72,8 +72,11 @@ We recommend storing your key securely in environment variables:
 - `client.artists`
 - `client.collaborators`
 - `client.labels`
-- `client.charts`
-- `client.stations`
+
+Info endpoints:
+- `client.info.sources` -> `/sources`
+- `client.info.status` -> `/status`
+- `client.info.definitions` -> `/definitions`
 
 ---
 

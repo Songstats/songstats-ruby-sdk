@@ -16,6 +16,22 @@ class SongstatsSDKTest < Minitest::Test
     assert_equal "/enterprise/v1/status", adapter.requests.last.path
   end
 
+  def test_info_sources_and_definitions_routes
+    adapter = FakeAdapter.new(
+      responses: [
+        response(200, { result: "success", sources: [] }),
+        response(200, { result: "success", definitions: {} })
+      ]
+    )
+    client = SongstatsSDK::Client.new(api_key: "test_key", http_adapter: adapter)
+
+    client.info.sources
+    assert_equal "/enterprise/v1/sources", adapter.requests[-1].path
+
+    client.info.definitions
+    assert_equal "/enterprise/v1/definitions", adapter.requests[-1].path
+  end
+
   def test_tracks_info_hits_expected_route_and_params
     adapter = FakeAdapter.new(
       responses: [response(200, { result: "success" })]
@@ -42,27 +58,6 @@ class SongstatsSDKTest < Minitest::Test
     assert_equal "/enterprise/v1/collaborators/top_curators", request.path
     assert_equal "collab1234", request.params[:songstats_collaborator_id]
     assert_equal "spotify", request.params[:source]
-  end
-
-  def test_station_request_posts_json_payload
-    adapter = FakeAdapter.new(
-      responses: [response(200, { result: "success" })]
-    )
-    client = SongstatsSDK::Client.new(api_key: "test_key", http_adapter: adapter)
-
-    client.stations.station_request(
-      radio_type: "radio",
-      name: "Test FM",
-      country_code: "US",
-      website: "https://test.fm",
-      city_name: "Miami"
-    )
-
-    request = adapter.requests.last
-    assert_equal "/enterprise/v1/stations/station_request", request.path
-    assert_equal "radio", request.json[:radio_type]
-    assert_equal "Test FM", request.json[:name]
-    assert_equal "US", request.json[:country_code]
   end
 
   def test_api_error_raises_songstats_api_error
@@ -100,6 +95,16 @@ class SongstatsSDKTest < Minitest::Test
     assert_equal "/enterprise/v1/artists/search", request.path
     assert_equal "fred again", request.params[:q]
     assert_equal 10, request.params[:limit]
+  end
+
+  def test_client_does_not_expose_charts_or_stations
+    adapter = FakeAdapter.new(
+      responses: [response(200, { result: "success" })]
+    )
+    client = SongstatsSDK::Client.new(api_key: "test_key", http_adapter: adapter)
+
+    refute_respond_to client, :charts
+    refute_respond_to client, :stations
   end
 
   private
