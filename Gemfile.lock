@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    songstats-ruby-sdk (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.27.0)
+    rake (13.3.1)
+
+PLATFORMS
+  arm64-darwin-23
+  ruby
+
+DEPENDENCIES
+  minitest (~> 5.20)
+  rake (~> 13.0)
+  songstats-ruby-sdk!
+
+BUNDLED WITH
+   2.5.17
