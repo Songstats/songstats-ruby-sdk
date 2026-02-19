@@ -8,10 +8,6 @@ All notable changes to this project are documented in this file.
 
 - Removed `charts` resource client from the SDK surface
 - Removed `stations` resource client from the SDK surface
-- Kept `info` endpoints:
-  - `client.info.sources` (`/sources`)
-  - `client.info.status` (`/status`)
-  - `client.info.definitions` (`/definitions`)
 
 ## [0.1.0] - 2026-02-19
 
