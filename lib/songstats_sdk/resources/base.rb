@@ -22,7 +22,7 @@ module SongstatsSDK
       end
 
       def normalize_params(params)
-        return nil if params.nil? || params.empty?
+        return nil if params.blank?
 
         normalized = {}
         params.each do |key, value|

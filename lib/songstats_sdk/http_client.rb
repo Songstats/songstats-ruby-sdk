@@ -15,7 +15,7 @@ module SongstatsSDK
     }.freeze
 
     def request(method:, base_url:, path:, headers:, params:, json:, timeout:)
-      uri = URI.join("#{base_url.chomp('/')}/", path.sub(%r{\A/}, ""))
+      uri = URI.join("#{base_url.chomp('/')}/", path.delete_prefix('/'))
       query = URI.encode_www_form(params || {})
       uri.query = [uri.query, query].compact.reject(&:empty?).join("&") unless query.empty?
 
@@ -72,7 +72,7 @@ module SongstatsSDK
     end
 
     def request(method, path, params: nil, json: nil)
-      endpoint = "/enterprise/v1/#{path.to_s.sub(%r{\A/}, "")}"
+      endpoint = "/enterprise/v1/#{path.to_s.delete_prefix('/')}"
       attempts = 0
 
       loop do
