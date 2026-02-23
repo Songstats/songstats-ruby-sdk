@@ -6,7 +6,7 @@ require "minitest/autorun"
 require_relative "../lib/songstats_sdk"
 
 class FakeAdapter
-  Request = Struct.new(:method, :base_url, :path, :headers, :params, :json, :timeout, keyword_init: true)
+  Request = Struct.new(:http_method, :base_url, :path, :headers, :params, :json, :timeout, keyword_init: true)
 
   attr_reader :requests
 
@@ -17,7 +17,7 @@ class FakeAdapter
 
   def request(method:, base_url:, path:, headers:, params:, json:, timeout:)
     @requests << Request.new(
-      method: method,
+      http_method: method,
       base_url: base_url,
       path: path,
       headers: headers,
