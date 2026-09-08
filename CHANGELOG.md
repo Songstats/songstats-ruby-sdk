@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.2] - 2026-09-08
+
+### Changed
+
+- Updated API documentation links to `developers.stats.company/songstats`.
+
+### Fixed
+
+- Fixed standalone Ruby usage failing during parameter normalization without ActiveSupport loaded.
+
 ## [0.2.1] - 2026-06-14
 
 ### Changed
