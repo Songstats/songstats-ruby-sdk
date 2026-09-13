@@ -9,6 +9,16 @@ All notable changes to this project are documented in this file.
 - Retry only GET requests; ambiguous write failures are surfaced after one attempt.
 - Disable Net::HTTP automatic retries so the SDK retry budget is enforced, and apply the configured timeout to socket writes.
 
+## [0.2.2] - 2026-09-08
+
+### Changed
+
+- Updated API documentation links to `developers.stats.company/songstats`.
+
+### Fixed
+
+- Fixed standalone Ruby usage failing during parameter normalization without ActiveSupport loaded.
+
 ## [0.2.1] - 2026-06-14
 
 ### Changed

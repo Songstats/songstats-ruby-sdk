@@ -3,7 +3,7 @@
 Official Ruby client for the **Songstats Enterprise API**.
 
 📦 RubyGems: https://rubygems.org/gems/songstats-ruby-sdk  
-📚 API Documentation: https://docs.songstats.com  
+📚 API Documentation: https://developers.stats.company/songstats<br>
 🔑 API Key Access: Please contact api@songstats.com
 
 ---
