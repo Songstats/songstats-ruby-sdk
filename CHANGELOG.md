@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+### Fixed
+
+- Retry only GET requests; ambiguous write failures are surfaced after one attempt.
+- Disable Net::HTTP automatic retries so the SDK retry budget is enforced, and apply the configured timeout to socket writes.
+
 ## [0.2.2] - 2026-09-08
 
 ### Changed
