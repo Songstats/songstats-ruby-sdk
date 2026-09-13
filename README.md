@@ -113,3 +113,5 @@ This SDK follows Semantic Versioning (SemVer).
 ## License
 
 MIT
+
+The client runs in plain Ruby without Rails or Active Support. Request parameters accept a hash or `nil`; empty hashes and nil-valued entries are omitted.
