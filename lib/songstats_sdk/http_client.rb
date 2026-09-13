@@ -32,6 +32,8 @@ module SongstatsSDK
       http.use_ssl = uri.scheme == "https"
       http.open_timeout = timeout
       http.read_timeout = timeout
+      http.write_timeout = timeout
+      http.max_retries = 0
 
       response = http.request(request)
       HTTPResponse.new(status: response.code.to_i, body: response.body.to_s, headers: response.to_hash)
@@ -73,6 +75,7 @@ module SongstatsSDK
 
     def request(method, path, params: nil, json: nil)
       endpoint = "/enterprise/v1/#{path.to_s.delete_prefix('/')}"
+      retries = method.to_s.downcase == "get" ? @max_retries : 0
       attempts = 0
 
       loop do
@@ -87,7 +90,7 @@ module SongstatsSDK
             timeout: @timeout
           )
         rescue *RETRYABLE_EXCEPTIONS => e
-          if attempts < @max_retries
+          if attempts < retries
             sleep(backoff_seconds(attempts))
             attempts += 1
             next
@@ -95,7 +98,7 @@ module SongstatsSDK
           raise SongstatsTransportError, e.message
         end
 
-        if RETRYABLE_STATUS_CODES.include?(response.status) && attempts < @max_retries
+        if RETRYABLE_STATUS_CODES.include?(response.status) && attempts < retries
           sleep(backoff_seconds(attempts))
           attempts += 1
           next

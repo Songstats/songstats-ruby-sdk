@@ -115,3 +115,9 @@ This SDK follows Semantic Versioning (SemVer).
 MIT
 
 The client runs in plain Ruby without Rails or Active Support. Request parameters accept a hash or `nil`; empty hashes and nil-valued entries are omitted.
+
+## Request retries
+
+`max_retries` applies only to GET requests. Write requests are attempted once
+because a transport failure or server error can occur after a write has already
+succeeded. Check the resulting state before retrying a write.
