@@ -10,7 +10,7 @@ Official Ruby client for the **Songstats Enterprise API**.
 
 ## Requirements
 
-- Ruby >= 3.0
+- Ruby >= 3.2
 
 ---
 
